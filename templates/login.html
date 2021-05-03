@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Event Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <ul>
+        <li style="float: left;"><a class="logo">Event Management System</a></li>
+        <li><a class="active" href="/login">Login</a></li>
+        <li><a href="/registered_events">Registered Events</a></li>
+        <li><a href="/events">Event</a></li>
+        <li><a href="/">Home</a></li>
+    </ul>
+    <div style="margin-top: 10%;" class="form-login">
+        <div class="login-text">
+            Login
+        </div>
+        <form method="POST" action = "/login_submit">
+            <div>
+                <input type="text" placeholder="Email" class="input-field" name="email">
+            </div>
+            <div>
+                <input type="password" placeholder="Password" class="input-field" name="password">
+            </div>
+            <div>
+                <input type="submit" class="input-button" value="Login">
+            </div>
+            <div>
+                <p style="margin-left:23%;padding-bottom:12% ;">Don't have an Account? <a href="/signup">Signup</a></p>
+            </div>
+        </form>
+    </div>
+    <div style="margin-left:40%;padding-bottom:9% ;">
+        <p style="color: red">  {{ login_error }} </p>
+    </div>
+</body>
+
+</html>

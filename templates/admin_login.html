@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Event Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div style="margin-top: 10%;" class="form-login">
+        <div class="login-text">
+            Login
+        </div>
+        <form action="/admin_submit" method="post">
+            <div>
+                <input type="text" placeholder="Username" class="input-field" name ="name">
+            </div>
+            <div>
+                <input type="password" placeholder="Password" class="input-field" name="password">
+            </div>
+            <div>
+                <input type="submit" class="input-button" value="Login">
+            </div>
+            <div>
+                <p style="margin-left:23%;padding-bottom:12% ;"></p>
+            </div>
+        </form>
+    </div>
+    <div style="margin-left:40%;padding-bottom:9% ;">
+        <p style="color: red">  {{ admin_login }} </p>
+    </div>
+</body>
+
+</html>

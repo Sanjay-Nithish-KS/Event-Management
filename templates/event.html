@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% if flag == 1 %}
+    <script>
+            alert('Registered Successfully')
+    </script>
+    {%endif%}
+    {% if flag == 0 %}
+    <script>
+            alert('You have already registered for the event')
+    </script>
+    {%endif%}
+</head>
+
+<body>
+    <ul>
+        <li style="float: left;"><a class="logo">Event Management System</a></li>
+        <li><a  href="/login">{{login}}</a></li>
+        <li><a href="/registered_events">Registered Events</a></li>
+        <li><a class="active" href="/events">Event</a></li>
+        <li><a href="/">Home</a></li>
+    </ul>
+    <div class="search">
+        <form action="/domain_search" method="post">
+            <input type="text" class="input-field" style="height: 40px;margin-right: 10px;" placeholder="Domain" name="domain">
+            <input type="submit" value="Search" class="input-button" style="margin-top: 0%; margin-left: 0%;">
+        </form>
+    </div>
+    <div class="container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Event Name</th>
+              <th>Domain</th>
+              <th>City</th>
+              <th>Date and Time</th>
+              <th>Ticket Price</th>
+                <th>Available No. of Tickets</th>
+                <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for i in records%}
+            <tr>
+              <td>{{i[0]}}</td>
+              <td>{{i[1]}}</td>
+              <td>{{i[2]}}</td>
+              <td>{{i[3]}}</td>
+              <td>{{i[4]}}</td>
+                <td>{{i[5]-i[7]}}</td>
+                <td>
+                    <form action="/event_register" method="post">
+                        {%if i[5]-i[7]!=0%}
+                            <button type="submit" name="register" value="{{i[6]}}" class="btn btn-primary" >Register</button>
+                        {%else%}
+                            <button type="submit" name="register" value="{{i[6]}}" class="btn btn-primary" disabled>Register</button>
+                        {%endif%}
+                    </form>
+                </td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hostel Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <ul>
+        <li style="float: left;"><a class="logo">Event Management System</a></li>
+        <li><a href="/admin_login">Logout</a></li>
+        <li><a href="/admin_event">Get Event Details</a></li>
+        <li><a href="/event_registration">Add Event</a></li>
+    </ul>
+    <div style="margin-top: 9%;" class="form-login">
+        <div class="login-text">
+            Event Registration
+        </div>
+        <form action="/add_event" method="post">
+            <div>
+                <input type="text" placeholder="Event Name" class="input-field" name="name">
+            </div>
+            <div>
+                <input type="text" placeholder="Event Domain" class="input-field" name="domain">
+            </div>
+            <div>
+                <input type="text" placeholder="Event City" class="input-field" name="city">
+            </div>
+            <div>
+                <input type="text" placeholder="Event Date and Time" class="input-field" name="date_time" onfocus="this.type='datetime-local'" onblur="this.type='text'">
+            </div>
+            <div>
+                <input type="text" placeholder="Ticket Price" class="input-field" name="price">
+            </div>
+            <div>
+                <input type="number" placeholder="Number of Seats" class="input-field" name="seats">
+            </div>
+            <div style="padding-bottom:12% ;">
+                <input  type="submit" class="input-button" value="Register">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

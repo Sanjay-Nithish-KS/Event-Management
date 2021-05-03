@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        function cancel(k,j)
+        {
+            alert('Are You Sure to Cancel the Ticket');
+            window.location.href="/cancel?transaction_id="+k+"&event_id="+j;
+        }
+    </script>
+    {%if flag==1%}
+    <script>
+            alert('Cancelled Ticket Successfully');
+    </script>
+    {%endif%}
+    {%if flag==0%}
+        <script>
+            alert('You cannot Cancel the Ticket. Its already Late...');
+        </script>
+    {%endif%}
+
+</head>
+
+<body>
+    <ul>
+        <li style="float: left;"><a class="logo">Event Management System</a></li>
+        <li><a  href="/login">{{login}}</a></li>
+        <li><a class="active" href="/registered_events">Registered Events</a></li>
+        <li><a href="/events">Event</a></li>
+        <li><a href="/">Home</a></li>
+    </ul>
+    <div class="container-fluid" style="padding-top: 7%">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                <th>Transaction ID</th>
+              <th>Event ID </th>
+              <th>Event Name</th>
+              <th>Date and Time</th>
+              <th>Ticket Price</th>
+                <th>
+                </th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for i in records%}
+            <tr>
+              <td>{{i[4]}}</td>
+              <td>{{i[0]}}</td>
+              <td>{{i[5]}}</td>
+              <td>{{i[2]}}</td>
+              <td>{{i[3]}}</td>
+                <td>
+                        <button type="submit" name="cancel" value="{{i[0]}}" class="btn btn-primary" onclick="cancel('{{i[4]}}','{{i[0]}}')" formmethod="post">Cancel</button>
+                </td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

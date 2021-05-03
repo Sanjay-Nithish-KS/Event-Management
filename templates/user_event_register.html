@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hostel Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <ul>
+        <li style="float: left;"><a class="logo">Event Management System</a></li>
+        <li><a class="active" href="/login">{{login}}</a></li>
+        <li><a href="/events">Event</a></li>
+        <li><a href="/">Home</a></li>
+    </ul>
+    <div style="margin-top: 9%;" class="form-login">
+        <div class="login-text">
+            Event Registration
+        </div>
+        <form action="/submit_register_event" method="post">
+            <div>
+                <input type="text" placeholder="Event ID" class="input-field" name="id" value="{{id}}" >
+            </div>
+            <div>
+                <input type="text" placeholder="Event Name" class="input-field" name="name" value="{{name}}" >
+            </div>
+            <div>
+                <input type="text" placeholder="Email" class="input-field" name="email" value="{{email}}" >
+            </div>
+            <div>
+                <input type="text" placeholder="Event City" class="input-field" name="city" value="{{city}}" >
+            </div>
+            <div>
+                <input type="text" placeholder="Event Date and Time" class="input-field" name="date_time" onfocus="this.type='datetime-local'" onblur="this.type='text'" value="{{date_time}}">
+            </div>
+            <div style="padding-bottom:12% ;">
+                <input  type="submit" class="input-button" value="Register">
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
